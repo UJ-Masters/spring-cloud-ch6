@@ -1,0 +1,41 @@
+spring:
+  main:
+    banner-mode: off
+    allow-bean-definition-overriding: true
+  application:
+    name: inventory-service
+  profiles:
+    active: dev
+  cloud:
+    config:
+      uri: http://localhost:8888/config
+      enabled: false
+
+  jpa:
+    hibernate.ddl-auto: create
+    show-sql: true
+    generate-ddl: true
+  datasource:
+    name: inventorydb
+  boot:
+    admin:
+      client:
+        url: http://localhost:7777/admin
+
+server:
+  servlet:
+    contextPath: /inventory
+  port: 8082
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: false

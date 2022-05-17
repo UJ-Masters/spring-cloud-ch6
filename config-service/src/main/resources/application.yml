@@ -1,0 +1,26 @@
+server:
+  port: 8888
+  servlet.context-path: /config
+
+spring:
+  main:
+    banner-mode: off
+  application:
+    name: config-service
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/UJ-Masters/spring-cloud-ch6
+          default-label: main
+  boot:
+    admin:
+      client:
+        url: http://localhost:7777/admin
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
